@@ -19,6 +19,18 @@ public class PedidoEntity {
     private long  id_usuario;
     private long  id_produto;
 
+    public long getId() {
+        return id;
+    }
+
+    public long getId_produto() {
+        return id_produto;
+    }
+
+    public long getId_usuario() {
+        return id_usuario;
+    }
+
     public PedidoEntity(PedidoEntity pedido){
         this.id_usuario = pedido.getId_usuario();
         this.id_produto = pedido.getId_produto();

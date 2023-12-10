@@ -22,6 +22,14 @@ public class PerfilEntity {
     @NotEmpty
     private String name;
 
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
     public PerfilEntity(PerfilEntity perfil){
         this.name = perfil.name;
     }

@@ -31,6 +31,22 @@ public class ProdutoEntity {
     @NotEmpty
     private long fabricante_id;
 
+    public long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public double getPreco() {
+        return preco;
+    }
+
+    public long getFabricante_id() {
+        return fabricante_id;
+    }
+
     public ProdutoEntity(ProdutoEntity produto){
         this.name = produto.name;
         this.preco = produto.preco;
