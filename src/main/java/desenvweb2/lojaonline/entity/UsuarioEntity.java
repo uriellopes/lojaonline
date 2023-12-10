@@ -1,0 +1,57 @@
+package desenvweb2.lojaonline.entity;
+
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+@Table(name = "usuario")
+@Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+public class UsuarioEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
+    @NotNull
+    @NotEmpty
+    private String name;
+    @NotNull
+    @NotEmpty
+    private String username;
+    @NotNull
+    @NotEmpty
+    private String password;
+    @NotNull
+    @NotEmpty
+    @Positive
+    private long perfil_id;
+
+    public UsuarioEntity(UsuarioEntity usuario){
+        this.name = usuario.name;
+        this.username = usuario.username;
+        this.password = usuario.password;
+        this.perfil_id = usuario.perfil_id;
+    }
+
+    public void AtualizarUsuario(UsuarioEntity dados) {
+        if(dados.getName() != null){
+            this.name = dados.getName();
+        }
+        if(dados.getUsername() != null){
+            this.username = dados.getUsername();
+        }
+        if(dados.getPassword() != null){
+            this.password = dados.getPassword();
+        }
+        if(dados.getPerfil_id() != 0){
+            this.perfil_id = dados.getPerfil_id();
+        }
+    }
+}
