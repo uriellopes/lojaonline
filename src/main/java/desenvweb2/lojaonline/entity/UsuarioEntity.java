@@ -33,6 +33,26 @@ public class UsuarioEntity {
     @Positive
     private long perfil_id;
 
+    public String getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public long getPerfil_id() {
+        return perfil_id;
+    }
+
+    public long getId() {
+        return id;
+    }
+
     public UsuarioEntity(UsuarioEntity usuario){
         this.name = usuario.name;
         this.username = usuario.username;

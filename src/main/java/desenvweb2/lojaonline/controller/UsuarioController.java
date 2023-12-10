@@ -11,8 +11,13 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/UsuarioEntity")
 public class UsuarioController {
+
+    private final UsuarioRepository repository;
+
     @Autowired
-    UsuarioRepository repository;
+    public UsuarioController(UsuarioRepository repository){
+        this.repository = repository;
+    }
 
     @GetMapping("/{id}")
     @Transactional
