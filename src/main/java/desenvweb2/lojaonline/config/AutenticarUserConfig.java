@@ -31,6 +31,8 @@ public class AutenticarUserConfig implements  UserDetailsService{
     @Autowired
     private UsuarioRepository repository;
 
+
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return NoOpPasswordEncoder.getInstance();
@@ -42,7 +44,7 @@ public class AutenticarUserConfig implements  UserDetailsService{
 
         return User.withUsername(usuario.getUsername())
                 .password(usuario.getPassword())
-                .roles("ADMIN")
+                .roles(usuario.getRole())
                 .build();
     }
 
@@ -56,5 +58,8 @@ public class AutenticarUserConfig implements  UserDetailsService{
                 .httpBasic(withDefaults())
                 .build();
     }
+
+    //Token authentication
+
 
 }

@@ -4,5 +4,6 @@ CREATE TABLE IF NOT EXISTS usuario (
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     perfil_id INT NOT NULL,
+    role VARCHAR(255) NOT NULL,
     FOREIGN KEY (perfil_id) REFERENCES perfil(id)
 );

@@ -33,6 +33,10 @@ public class UsuarioEntity {
     @Positive
     private long perfil_id;
 
+    @NotNull
+    @NotEmpty
+    private String role;
+
     public String getUsername() {
         return username;
     }
@@ -53,11 +57,16 @@ public class UsuarioEntity {
         return id;
     }
 
+    public String getRole() {
+        return role;
+    }
+
     public UsuarioEntity(UsuarioEntity usuario){
         this.name = usuario.name;
         this.username = usuario.username;
         this.password = usuario.password;
         this.perfil_id = usuario.perfil_id;
+        this.role = usuario.role;
     }
 
     public void AtualizarUsuario(UsuarioEntity dados) {
@@ -72,6 +81,9 @@ public class UsuarioEntity {
         }
         if(dados.getPerfil_id() != 0){
             this.perfil_id = dados.getPerfil_id();
+        }
+        if(dados.getRole() != null){
+            this.role = dados.getRole();
         }
     }
 }
