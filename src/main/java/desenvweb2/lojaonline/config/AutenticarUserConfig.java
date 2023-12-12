@@ -54,12 +54,16 @@ public class AutenticarUserConfig implements  UserDetailsService{
                 .authorizeHttpRequests(a -> a
                         .anyRequest().hasRole("ADMIN")
                 )
+                .authorizeHttpRequests(a -> a
+                        .requestMatchers("/UsuarioEntity/**").hasRole("USER")
+                        .requestMatchers("/PerfilEntity/**").hasRole("USER")
+                        .requestMatchers("/FabricanteEntity/**").hasRole("FABRICANTE")
+                        .requestMatchers("/ProdutoEntity/**").hasRole("FABRICANTE")
+                        .requestMatchers("/PedidoEntity/**").hasRole("FABRICANTE")
+                )
                 .formLogin(withDefaults())
                 .httpBasic(withDefaults())
                 .build();
     }
-
-    //Token authentication
-
-
+    
 }
