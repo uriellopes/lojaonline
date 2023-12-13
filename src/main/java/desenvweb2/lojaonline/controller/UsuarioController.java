@@ -1,46 +1,20 @@
 package desenvweb2.lojaonline.controller;
 
-
-import desenvweb2.lojaonline.entity.UsuarioEntity;
-import desenvweb2.lojaonline.repository.UsuarioRepository;
+import desenvweb2.lojaonline.model.UsuarioEntity;
+import desenvweb2.lojaonline.service.UsuarioService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/UsuarioEntity")
+@RequestMapping("/usuario")
 public class UsuarioController {
-
-    private final UsuarioRepository repository;
-
     @Autowired
-    public UsuarioController(UsuarioRepository repository){
-        this.repository = repository;
-    }
+    UsuarioService usuarioService;
 
-    @GetMapping("/{id}")
-    @Transactional
-    public UsuarioEntity getById(@PathVariable long id){
-        return repository.getReferenceById(id);
-    }
-
-    @PutMapping
-    @Transactional
-    public void putUsuario(@RequestBody @Valid UsuarioEntity dados){
-        UsuarioEntity usuario =  repository.getReferenceById(dados.getId());
-        usuario.AtualizarUsuario(dados);
-    }
-
-    @PostMapping
-    @Transactional
-    public void postUsuario(@RequestBody @Valid UsuarioEntity dados){
-        repository.save(new UsuarioEntity(dados));
-    }
-
-    @DeleteMapping("/{id}")
-    @Transactional
-    public void deleteUsuario(@PathVariable long id){
-        repository.deleteById(id);
+    public UsuarioEntity cadastrar(@RequestBody @Valid UsuarioEntity newUser) {
+        return usuarioService.cadastrarUsuario(newUser);
     }
 }
