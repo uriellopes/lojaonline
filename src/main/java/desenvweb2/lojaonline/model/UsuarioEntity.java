@@ -1,12 +1,12 @@
 package desenvweb2.lojaonline.model;
 
+import desenvweb2.lojaonline.DTO.AtualizarUsuarioDTO;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import javax.management.relation.Role;
 import java.util.Collection;
 import java.util.List;
 
@@ -63,5 +63,18 @@ public class UsuarioEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    public UsuarioEntity atualizarUsuario(AtualizarUsuarioDTO dados) {
+        if(dados.name() != null){
+            this.name = dados.name();
+        }if(dados.login() != null){
+            this.login = dados.login();
+        }if(dados.password() != null){
+            this.password = dados.password();
+        }if(dados.role() != null){
+            this.role = dados.role();
+        }
+        return this;
     }
 }
