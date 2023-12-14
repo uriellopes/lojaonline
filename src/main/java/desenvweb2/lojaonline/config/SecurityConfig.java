@@ -29,7 +29,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests(autorized -> autorized
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/registrar").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/usuario").hasRole("ADMIN")
+                        .requestMatchers("/usuario/**").hasRole("ADMIN")
+                        .requestMatchers("/fabricante/**").hasRole("ADMIN")
                         .anyRequest().permitAll())
                 .addFilterBefore(securityFilter, UsernamePasswordAuthenticationFilter.class)
                 .build();

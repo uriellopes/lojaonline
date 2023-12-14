@@ -2,6 +2,7 @@ package desenvweb2.lojaonline.model;
 
 import desenvweb2.lojaonline.DTO.AtualizarUsuarioDTO;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -20,9 +21,13 @@ public class UsuarioEntity implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @NotNull
     private String name;
+    @NotNull
     private String login;
+    @NotNull
     private String password;
+    @NotNull
     @Enumerated(EnumType.STRING)
     private RoleEnum role;
 
