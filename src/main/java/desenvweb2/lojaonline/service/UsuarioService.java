@@ -53,8 +53,12 @@ public class UsuarioService implements UserDetailsService {
         if( dados.login() != null && usuarioRepository.findByLogin(dados.login()) != null ) {
             throw new RuntimeException("Login já existe. Escolha outro login.");
         }
-        UsuarioEntity usuario = usuarioRepository.getReferenceById(id);
-        return usuarioRepository.save(usuario.atualizarUsuario(dados));
+        try {
+            UsuarioEntity usuario = usuarioRepository.getReferenceById(id);
+            return usuarioRepository.save(usuario.atualizarUsuario(dados));
+        } catch (RepositoryCreationException e) {
+            throw new RuntimeException(e.getMessage());
+        }
     }
 
     @Transactional
