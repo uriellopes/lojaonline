@@ -18,6 +18,10 @@ public class FabricanteService {
         return fabricanteRepository.findAll();
     }
 
+    public FabricanteEntity findByName(String name) {
+        return fabricanteRepository.findByName(name);
+    }
+
     @Transactional
     public FabricanteEntity criarFabricante(String name) {
         FabricanteEntity existFabricante = fabricanteRepository.findByName(name);

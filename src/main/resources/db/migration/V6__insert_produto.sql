@@ -1,0 +1,1 @@
+INSERT INTO produto (name, id_fabricante, id_loja) VALUES ('Produto 1', 1, 3), ('Produto 2', 2, 3), ('Produto 3', 3, 3);

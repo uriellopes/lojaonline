@@ -34,6 +34,10 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.findById(id);
     }
 
+    public UsuarioEntity getUserIdByLogin(String name) {
+        return usuarioRepository.findIdByLogin(name);
+    }
+
     @Transactional
     public String cadastrarUsuario(RegistrarUsuarioDTO dados) {
         if( usuarioRepository.findByLogin(dados.login()) != null ) {
