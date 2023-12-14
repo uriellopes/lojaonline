@@ -31,10 +31,10 @@ public class ProdutoService {
         FabricanteEntity fabricante = fabricanteService.findByName(dados.fabricante_name());
 
         if( fabricante != null ) {
-            return produtoRepository.save(new ProdutoEntity(dados.name(), fabricante, loja));
+            return produtoRepository.save(new ProdutoEntity(dados.name(), dados.preco(), fabricante, loja));
         }
 
         FabricanteEntity novoFabricante = fabricanteService.criarFabricante(dados.fabricante_name());
-        return produtoRepository.save(new ProdutoEntity(dados.name(), novoFabricante, loja));
+        return produtoRepository.save(new ProdutoEntity(dados.name(), dados.preco(), novoFabricante, loja));
     }
 }

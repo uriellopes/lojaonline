@@ -20,6 +20,8 @@ public class ProdutoEntity {
     @NotNull
     private String name;
     @NotNull
+    private double preco;
+    @NotNull
     @ManyToOne
     @JoinColumn(name="id_fabricante", nullable = false)
     private FabricanteEntity fabricante;
@@ -28,8 +30,9 @@ public class ProdutoEntity {
     @JoinColumn(name="id_loja", nullable = false)
     private UsuarioEntity loja;
 
-    public ProdutoEntity(String name, FabricanteEntity fabricante, UsuarioEntity loja) {
+    public ProdutoEntity(String name, double preco, FabricanteEntity fabricante, UsuarioEntity loja) {
         this.name = name;
+        this.preco = preco;
         this.fabricante = fabricante;
         this.loja = loja;
     }
